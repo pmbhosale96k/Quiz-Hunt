@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧠 Take Test</title>
+  <link rel="stylesheet" href="/css/test.css" />
+  <script src="/js/test.js" defer></script>
+</head>
+<body>
+  <!-- 🔝 Header -->
+  <div class="test-header">
+    <div class="user-info">👤 <%= user.username %></div>
+    <div class="question-progress" id="questionCount">✅ Question 0 of 0</div>
+    <div class="timer" id="timerDisplay">⏳ Time Left: 00:00</div>
+  </div>
+
+  <!-- 🎯 Difficulty Selection Box -->
+  <div id="difficultyBox" class="difficulty-box">
+    <h2>Select Difficulty</h2>
+    <form id="startForm">
+      <select name="difficulty" id="difficulty" required>
+        <option disabled selected value="">Choose Difficulty</option>
+        <option value="easy">🟢 Easy</option>
+        <option value="medium">🟠 Medium</option>
+        <option value="hard">🔴 Hard</option>
+      </select>
+      <button type="submit" class="start-btn">🚀 Start Test</button>
+    </form>
+  </div>
+
+  <!-- 🧠 Test Body -->
+  <div id="testBox" class="test-body" style="display: none;">
+    <div id="questionContainer" class="question-box"></div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button id="prevBtn" style="display: none;">⬅️ Previous</button>
+      <button id="nextBtn" style="display: none;">Next ➡️</button>
+      <button id="submitbtn" class="submit-btn" style="display: none;">🚀 Submit Test</button>
+    </div>
+  </div>
+</body>
+</html>

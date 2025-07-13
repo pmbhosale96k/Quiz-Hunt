@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>➕ Add Question</title>
+  <link rel="stylesheet" href="/css/addQuestions.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+  <div class="edit-container">
+    <h1 class="form-title"><i class="fas fa-plus-circle"></i> Add New Question</h1>
+
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <form class="edit-form" action="/admin/add" method="POST">
+      <div class="form-group">
+        <label>Question Text</label>
+        <input type="text" name="question" placeholder="Enter the question" required />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Option 1</label>
+          <input type="text" name="option1" placeholder="Option 1" required />
+        </div>
+        <div class="form-group">
+          <label>Option 2</label>
+          <input type="text" name="option2" placeholder="Option 2" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Option 3</label>
+          <input type="text" name="option3" placeholder="Option 3" required />
+        </div>
+        <div class="form-group">
+          <label>Option 4</label>
+          <input type="text" name="option4" placeholder="Option 4" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Correct Answer</label>
+          <input type="text" name="correctAnswer" placeholder="Correct Answer" required />
+        </div>
+
+        <div class="form-group">
+          <label>Question Type</label>
+          <select name="type" required>
+            <option value="">Select Type</option>
+            <option value="MCQ">MCQ</option>
+            <option value="True/False">True/False</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Difficulty</label>
+          <select name="difficulty" required>
+            <option value="">Select Difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Tags (comma-separated)</label>
+        <input type="text" name="tags" placeholder="e.g. math, algebra" required />
+      </div>
+
+      <button type="submit" class="submit-btn">Add Question</button>
+    </form>
+
+    <div class="back-link"><a href="/dashboard">← Back to Dashboard</a></div>
+  </div>
+
+  <script>
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('added') === 'success') {
+    Swal.fire({
+      icon: 'success',
+      title: 'Added!',
+      text: '✅ Question added successfully',
+      timer: 2000,
+      showConfirmButton: false
+    });
+
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+  </script>
+</body>
+</html>

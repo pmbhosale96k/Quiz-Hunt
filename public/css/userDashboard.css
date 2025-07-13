@@ -1,0 +1,87 @@
+:root {
+  --primary: #ff6f3c;
+  --highlight: #ffd166;
+  --secondary: #6effb7;
+  --bg: #1e2022;
+  --text: #f8f9fa;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('/images/bg_6.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+}
+
+.dashboard-container {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(255, 111, 60, 0.2);
+}
+
+h1 {
+  font-size: 2rem;
+  color: var(--highlight);
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(255, 111, 60, 0.05);
+}
+
+.card p {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  background: linear-gradient(45deg, var(--primary), var(--highlight));
+  color: #1e2022;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(45deg, var(--highlight), var(--primary));
+  transform: translateY(-2px);
+}
+
+.logout {
+  background-color: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--secondary);
+}
+
+.logout:hover {
+  background-color: var(--secondary);
+  color: #1e2022;
+}

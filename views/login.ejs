@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Login</title>
+  <link rel="stylesheet" href="/css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+
+</head>
+<body>
+
+  <!-- 🧠 QuizHunt Heading - placed outside of login box -->
+<h1 class="brand-heading">
+  <span class="brand-icon">💡</span>
+  QuizHunt
+</h1>
+
+
+  <!-- 👤 Login Box -->
+  <div class="login-container">
+    <div class="login-header">
+      <h1>👤 User Login</h1>
+    </div>
+
+    <% if (typeof error !== 'undefined') { %>
+      <div class="error-message"><%= error %></div>
+    <% } %>
+
+    <form action="/api/auth/login" method="POST" class="login-form">
+      <div class="form-group">
+        <input type="email" name="email" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" required />
+      </div>
+      <button type="submit" class="login-btn">Login as User</button>
+    </form>
+
+    <div class="login-footer">
+      <p>Don't have an account? <a class="auth-link" href="/signup">Signup here</a></p>
+      <p>Are you an admin? <a class="auth-link" href="/admin-login">Login here</a></p>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

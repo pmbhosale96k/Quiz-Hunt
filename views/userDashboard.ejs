@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎯 User Dashboard</title>
+  <link rel="stylesheet" href="/css/userDashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <h1>🎯 Welcome, <%= user.username %>!</h1>
+
+    <div class="card">
+      <p><i class="fas fa-play-circle"></i> Ready to take a test?</p>
+      <a href="/test" class="btn">Start Test</a>
+    </div>
+
+    <div class="card">
+      <p><i class="fas fa-history"></i> View your previous attempts</p>
+      <a href="/history" class="btn">Test History</a>
+    </div>
+
+    <div class="card logout-card">
+      <a href="/api/auth/logout" class="btn logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </div>
+</body>
+
+</html>

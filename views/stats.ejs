@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>📊 Platform Statistics</title>
+  <!-- Add in your <head> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/stats.css">
+</head>
+
+<body>
+  <div class="dashboard-wrapper">
+
+    <h1> Admin Stats Dashboard</h1>
+
+    <div class="stats-cards">
+      <div class="card">
+        <i class="fas fa-users icon"></i>
+        <h3>Total Users</h3>
+        <p>
+          <%= totalUsers %>
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-question-circle icon"></i>
+        <h3>Total Questions</h3>
+        <p>
+          <%= totalQuestions %>
+        </p>
+      </div>
+
+      <div class="card">
+        <i class="fas fa-chart-line icon"></i>
+        <h3>Total Submissions</h3>
+        <p>
+          <%= avgScoreData.length %>
+        </p>
+      </div>
+
+    </div>
+
+    <div class="table-section">
+      <h2>📋 Recent Test Submissions</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Email</th>
+            <th>Score</th>
+            <th>Total</th>
+            <th>Test Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (avgScoreData.length===0) { %>
+            <tr>
+              <td colspan="5" class="no-data">❌ No test results available</td>
+            </tr>
+            <% } else { %>
+              <% avgScoreData.forEach(r=> { %>
+                <tr>
+                  <td>
+                    <%= r.userId?.username || 'Unknown' %>
+                  </td>
+                  <td>
+                    <%= r.userId?.email || 'N/A' %>
+                  </td>
+                  <td>
+                    <%= r.score %>
+                  </td>
+                  <td>
+                    <%= r.total %>
+                  </td>
+                  <td>
+                    <%= new Date(r.testDate).toLocaleString() %>
+                  </td>
+                </tr>
+                <% }) %>
+                  <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="back-link">
+      <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+
+  </div>
+</body>
+
+</html>

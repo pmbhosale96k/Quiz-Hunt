@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📋 All Questions</title>
+  <link rel="stylesheet" href="/css/allQue.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>📋 All Questions</h1>
+
+    <form method="GET" action="/admin/all" class="filter-form">
+      <input type="text" name="keyword" placeholder="🔍 Keyword..." value="<%= typeof keyword !== 'undefined' ? keyword : '' %>"/>
+
+      <select name="difficulty">
+        <option value="">All Difficulties</option>
+        <option value="easy" <%= difficulty === 'easy' ? 'selected' : '' %>>Easy</option>
+        <option value="medium" <%= difficulty === 'medium' ? 'selected' : '' %>>Medium</option>
+        <option value="hard" <%= difficulty === 'hard' ? 'selected' : '' %>>Hard</option>
+      </select>
+
+      <input type="text" name="tag" placeholder="🏷️ Tag (e.g. math)" value="<%= typeof tag !== 'undefined' ? tag : '' %>" />
+
+      <select name="type">
+        <option value="">All Types</option>
+        <option value="MCQ" <%= type === 'MCQ' ? 'selected' : '' %>>MCQ</option>
+      </select>
+
+      <button type="submit" class="search-btn">Search</button>
+    </form>
+
+    <% if (questions.length > 0) { %>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Options</th>
+              <th>Answer</th>
+              <th>Difficulty</th>
+              <th>Type</th>
+              <th>Tags</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% questions.forEach(q => { %>
+              <tr>
+                <td><%= q.question %></td>
+                <td>
+                  <ul>
+                    <% q.option.forEach(opt => { %>
+                      <li><%= opt %></li>
+                    <% }) %>
+                  </ul>
+                </td>
+                <td><%= q.correctAnswer %></td>
+                <td><%= q.difficulty %></td>
+                <td><%= q.type %></td>
+                <td><%= q.tags.join(', ') %></td>
+                <td class="actions">
+                  <a href="/admin/edit-question/<%= q._id %>" class="edit">Edit ✏️</a>
+
+                  <form action="/admin/delete/<%= q._id %>" method="POST">
+                    <button type="submit" class="delete">🗑️</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } else { %>
+      <p class="no-data">❌ No questions found.</p>
+    <% } %>
+
+    <div class="back">
+      <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+  </div>
+  
+<script>
+  if (window.location.search) {
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  <% if (typeof deleted !== 'undefined' && deleted === 'success') { %>
+    Swal.fire({
+      icon: 'success',
+      title: 'Deleted!',
+      text: '✅ Question deleted successfully',
+      timer: 1500,
+      showConfirmButton: false
+    });
+  <% } %>
+</script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📜 My Test History</title>
+  <link rel="stylesheet" href="/css/history.css">
+</head>
+<body>
+  <div class="history-container">
+    <h2>📜 Test History for <%= user.username %></h2>
+
+    <% if (history.length === 0) { %>
+      <p class="no-history">❌ No test attempts found for <strong><%= user.username %></strong>.</p>
+    <% } else { %>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>📅 Date</th>
+              <th>✅ Score</th>
+              <th>🎯 Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% history.forEach(result => { %>
+              <tr>
+                <td><%= new Date(result.testDate).toLocaleDateString() %></td>
+                <td><%= result.score %></td>
+                <td><%= result.total %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+
+    <div class="back-link">
+      <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🏆 User Leaderboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="/css/top10.css" />
+</head>
+<body>
+
+  <div class="leaderboard-container">
+  <h1><i class="fas fa-trophy"></i> Top Users</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Highest Score</th>
+          <th>Attempts</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% users.forEach((u, i) => { %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= u.username %></td>
+            <td><%= u.email %></td>
+            <td><%= u.highestScore %></td>
+            <td><%= u.attempts %></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+    <div class="back-link">
+      <a href="/dashboard">← Back to Dashboard</a>
+    </div>
+  </div>
+
+  <script>
+    console.log("📄 Leaderboard page loaded.");
+  </script>
+
+</body>
+</html>

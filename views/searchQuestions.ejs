@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search and Filter Questions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    form, table { margin-bottom: 30px; }
+    table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 10px; }
+    th { background-color: #f0f0f0; }
+  </style>
+</head>
+<body>
+
+  <h2>🔍 Search & Filter Questions</h2>
+
+  <form method="GET" action="/admin/search">
+    <input type="text" name="keyword" placeholder="Search by keyword" />
+    
+    <select name="difficulty">
+      <option value="">All Difficulties</option>
+      <option value="easy">Easy</option>
+      <option value="medium">Medium</option>
+      <option value="hard">Hard</option>
+    </select>
+
+    <input type="text" name="tag" placeholder="Tag (e.g. math)" />
+
+    <select name="type">
+      <option value="">All Types</option>
+      <option value="MCQ">MCQ</option>
+    </select>
+
+    <button type="submit">Search</button>
+  </form>
+
+  <% if (results && results.length > 0) { %>
+    <h3>Results: <%= results.length %> questions found</h3>
+    <table>
+      <tr>
+        <th>Question</th>
+        <th>Options</th>
+        <th>Correct Answer</th>
+        <th>Difficulty</th>
+        <th>Type</th>
+        <th>Tags</th>
+      </tr>
+      <% results.forEach(q => { %>
+        <tr>
+          <td><%= q.question %></td>
+          <td>
+            <% q.option.forEach(opt => { %>
+              <div><%= opt %></div>
+            <% }) %>
+          </td>
+          <td><%= q.correctAnswer %></td>
+          <td><%= q.difficulty %></td>
+          <td><%= q.type %></td>
+          <td><%= q.tags.join(', ') %></td>
+        </tr>
+      <% }) %>
+    </table>
+  <% } else if (results) { %>
+    <p>No questions found matching your criteria.</p>
+  <% } %>
+
+  <a href="/dashboard">← Back to Dashboard</a>
+
+</body>
+</html>

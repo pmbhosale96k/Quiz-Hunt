@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎯 Test Result</title>
+  <link rel="stylesheet" href="/css/show-result.css">
+</head>
+<body>
+  <div class="result-message">
+    <% if (score === total) { %>
+      <h2 class="perfect">🏆 Outstanding! Perfect Score!</h2>
+    <% } else if (score === total - 1) { %>
+      <h2 class="almost-perfect">🌟 So Close! Great Effort!</h2>
+    <% } else if (score < 2) { %>
+      <h2 class="low-score"> Keep Trying!</h2>
+    <% } else { %>
+      <h2 class="good">🎉 Well Done!</h2>
+    <% } %>
+
+    <h3 class="score">Score: <%= score %> / <%= total %></h3>
+    <p>Your test is complete. Review your results and keep learning!</p>
+    <p class="encouragement">Keep practicing to improve your score! 💪</p>
+    <a href="/dashboard" class="btn">🏠 Back to Dashboard</a>
+  </div>
+</body>
+</html>

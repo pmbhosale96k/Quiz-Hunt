@@ -1,0 +1,184 @@
+:root {
+  --bg-gradient: linear-gradient(135deg, #1e2022, #2c2e31);
+  --primary: #ff6f3c;         /* vibrant orange */
+  --secondary: #6effb7;       /* soft emerald green */
+  --highlight: #ffd166;       /* warm yellow */
+  --glass: rgba(255, 255, 255, 0.05);
+  --border-glow: rgba(255, 111, 60, 0.4);
+  --text-light: #f8f9fa;
+  --error: #ef476f;
+}
+
+body {
+  margin: 0;
+  padding: 30px 0; /* top-bottom spacing for heading + form */
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg-gradient);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-light);
+  background: url('/images/bg_5.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+
+/* 🌟 QuizHunt Branding */
+.brand-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.brand-heading {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: #38ef7d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 0 4px rgba(56, 239, 125, 0.3);
+}
+
+.brand-icon {
+  font-size: 2.4rem;
+}
+
+
+
+
+.login-container {
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-glow);
+  border-radius: 18px;
+  padding: 40px 35px;
+  width: 90%;
+  max-width: 420px;
+  box-shadow: 0 0 25px rgba(255, 111, 60, 0.3);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.login-header h1 {
+  font-size: 2rem;
+  text-align: center;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 20px;
+  letter-spacing: 0.8px;
+}
+
+/* Form */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group input {
+  width: 90%;
+  padding: 14px 18px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  color: var(--text-light);
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* Button */
+.login-btn {
+  width: 100%;
+  background: linear-gradient(45deg, var(--primary), var(--highlight));
+  color: #1e2022;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+  margin-top: 10px;
+  box-shadow: 0 0 10px var(--primary);
+}
+
+.login-btn:hover {
+  background: linear-gradient(45deg, var(--highlight), var(--primary));
+  box-shadow: 0 0 18px var(--highlight);
+  transform: translateY(-2px);
+}
+
+/* Error */
+.error-message {
+  background-color: rgba(239, 71, 111, 0.1);
+  color: var(--error);
+  padding: 12px;
+  border-left: 4px solid var(--error);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+/* Footer Links */
+.login-footer {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.auth-link {
+  color: var(--highlight);
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+}
+
+.auth-link:hover {
+  color: var(--secondary);
+}
+
+.auth-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: var(--secondary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.auth-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .login-container {
+    padding: 30px 20px;
+  }
+
+  .login-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-group input {
+    padding: 12px 15px;
+  }
+}

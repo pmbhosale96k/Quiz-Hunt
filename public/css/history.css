@@ -1,0 +1,97 @@
+:root {
+  --primary: #ff6f3c;
+  --highlight: #ffd166;
+  --secondary: #6effb7;
+  --bg: #1e2022;
+  --text: #f8f9fa;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('/images/bg_6.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.history-container {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border);
+  padding: 30px 40px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(255, 111, 60, 0.15);
+  max-width: 800px;
+  width: 100%;
+}
+
+h2 {
+  text-align: center;
+  color: var(--highlight);
+  margin-bottom: 25px;
+}
+
+.no-history {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  margin-bottom: 20px;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text);
+}
+
+th, td {
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+th {
+  background-color: var(--card-bg);
+  color: var(--highlight);
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+
+tr:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.back-link {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.back-link a {
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border: 1px solid var(--secondary);
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.back-link a:hover {
+  background-color: var(--secondary);
+  color: #1e2022;
+}
